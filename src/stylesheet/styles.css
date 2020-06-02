@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -5,20 +7,20 @@
 }
 
 body {
-  /* background: url(https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80); */
-  /* background: linear-gradient(to bottom, #1f4068, #162447);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.527), rgb(0, 0, 0)),
+    url(https://images.unsplash.com/photo-1508081883599-a58656e0ac48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80);
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; */
+  background-attachment: fixed;
+  background-blend-mode: saturation;
+  overflow: hidden;
 }
 
 .hamburger {
   /* background : yellow; */
   position: sticky;
-  right: 0;
-  top: 0;
-  width: 45px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -28,8 +30,76 @@ body {
 }
 
 .hamburger .rect {
-  height: 12%;
+  height: 8%;
   width: 80%;
   border-radius: 50px;
   background: rgb(226, 226, 226);
+}
+
+.lightbox {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.733);
+  display: none;
+}
+
+.lightbox.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: 90%;
+  height: 60%;
+  max-width: 350px;
+  max-height: 300px;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form input {
+  width: 70%;
+  height: 50px;
+  margin: 20px;
+  padding: 10px;
+  font-size: 1.25em;
+  border: none;
+  border-bottom: 2px solid grey;
+  transition: border-bottom 0.5s;
+  font-family: "Montserrat", sans-serif;
+}
+
+.form input:focus {
+  outline: none;
+  border-bottom: 2px solid black;
+}
+
+.form button {
+  width: 70%;
+  height: 50px;
+  margin: 20px;
+  font-size: 1.15em;
+  background: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  transition: background 0.5s, color 0.5s;
+}
+
+.form button:hover {
+  background: black;
+  color: white;
+}
+
+.form button:focus {
+  outline: none;
 }
