@@ -18,14 +18,18 @@
 	overflow: auto;
 	color:#ffffff;
 	font-family: 'Abel', sans-serif;
-	margin-top: 8px;
-	margin-bottom: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.entrylist:hover
+{
+	background-color:#3f3e40;
 }
 .listentry{
 	float:left;
 }
 .le{
-	margin-left: 2px;
+	padding-left: 2px;
 	width: 34.6%;
 }
 .le2{
