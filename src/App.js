@@ -5,9 +5,11 @@ import "./stylesheet/sidebar.css";
 import "./stylesheet/playlist.css";
 import "./stylesheet/playlistpage.css";
 import "./stylesheet/navbar.css";
+import "./stylesheet/profilepage.css";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import PlaylistPage from "./components/PlaylistPage";
+import ProfilePage from "./components/ProfilePage";
 
 class App extends Component {
   render() {
@@ -20,7 +22,7 @@ class App extends Component {
 
           <div className="midSection">
             <Switch>
-              <Route path="/playlist/:id" component={PlaylistPage} />
+              <Route path="/playlist/:id" component={ProfilePage} />
             </Switch>
           </div>
         </div>
