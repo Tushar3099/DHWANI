@@ -4,7 +4,9 @@ import { Headset } from "@material-ui/icons";
 const Sidebar = () => {
   const toggleSidebar = () => {
     const sidebar = document.querySelector(".sidebar");
+    const midSection = document.querySelector(".midSection");
     sidebar.classList.toggle("sidebar-active");
+    midSection.classList.toggle("section-active");
   };
 
   const toggleProfile = () => {

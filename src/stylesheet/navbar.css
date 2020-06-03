@@ -6,11 +6,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(80, 80, 80, 0.411);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.479), black);
   height: 80px;
   color: white;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 1px;
+  border-bottom: 2px solid white;
 }
 
 .navbar .item {
@@ -85,7 +86,7 @@
   width: 40px;
   margin: 5px;
   border-radius: 50%;
-  box-shadow: 20px 20px 60px #0d0b14, -20px -20px 60px #080829;
+  box-shadow: 20px 20px 60px #0d0b14, -20px -20px 60px #000000;
   cursor: pointer;
 }
 

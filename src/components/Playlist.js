@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Playlist = () => {
   const playlist = [
@@ -55,10 +56,12 @@ const Playlist = () => {
   const renderPlaylist = playlist.map(playlist => {
     return (
       <>
-        <div className="item" key={playlist.id}>
-          <img src={playlist.img} alt="img" />
-          <div className="name">{playlist.name}</div>
-        </div>
+        <Link to={`/playlist/${playlist.id}`}>
+          <div className="item" key={playlist.id}>
+            <img src={playlist.img} alt="img" />
+            <div className="name">{playlist.name}</div>
+          </div>
+        </Link>
       </>
     );
   });

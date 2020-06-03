@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./stylesheet/styles.css";
 import "./stylesheet/sidebar.css";
 import "./stylesheet/playlist.css";
@@ -8,15 +9,22 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import PlaylistPage from "./components/PlaylistPage";
 
-
 class App extends Component {
-  render(){
+  render() {
     return (
-      <>
-        <Navbar />
-        <Sidebar />
-        <PlaylistPage />
-      </>
+      <BrowserRouter>
+        <Route path="/" component={Navbar} />
+
+        <div className="section">
+          <Route path="/" component={Sidebar} />
+
+          <div className="midSection">
+            <Switch>
+              <Route path="/playlist/:id" component={PlaylistPage} />
+            </Switch>
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }
