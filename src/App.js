@@ -15,31 +15,35 @@ import Search from "./components/search";
 
 import ProfilePage from "./components/ProfilePage";
 
+const App = () => {
+  const user = {
+    email: "rdj@gmail.com",
+    username: "Robert Downie Jr.",
+    bio: "You know who I am"
+  };
 
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Route path="/" component={Navbar} />
+  return (
+    <BrowserRouter>
+      <Route path="/" component={Navbar} />
 
-        <div className="section">
-          <Route path="/" component={Sidebar} />
+      <div className="section">
+        <Route path="/" component={Sidebar} />
 
-          <div className="midSection">
-            <Switch>
+        <div className="midSection">
+          <Switch>
+            <Route path="/" exact component={Search} />
+            <Route path="/playlist/:id" component={PlaylistPage} />
+            {/* <Route path="/song/:id" component={Song} /> */}
 
-              <Route path="/" exact component={Search} />
-              <Route path="/playlist/:id" component={PlaylistPage} />
-              {/* <Route path="/song/:id" component={Song} /> */}
-
-              <Route path="/playlist/:id" component={ProfilePage} />
-
-            </Switch>
-          </div>
+            <Route
+              path="/profile/:id"
+              render={props => <ProfilePage {...props} user={user} />}
+            />
+          </Switch>
         </div>
-      </BrowserRouter>
-    );
-  }
-}
+      </div>
+    </BrowserRouter>
+  );
+};
 
 export default App;

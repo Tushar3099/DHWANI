@@ -51,8 +51,12 @@ const Sidebar = () => {
             />
             <h5>Tushar</h5>
             <div className="dropdown">
-              <li>Profile</li>
-              <li>Logout</li>
+              <Link to="/profile/:id">
+                <li>Profile</li>
+              </Link>
+              <Link>
+                <li>Logout</li>
+              </Link>
             </div>
           </div>
         </div>
