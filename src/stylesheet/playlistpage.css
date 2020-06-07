@@ -1,10 +1,9 @@
 .playlistcont {
   width: 80%;
   max-width: 800px;
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 50%;
-  /* height: 200vh; */
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
   color: #ffffff;
 }

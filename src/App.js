@@ -8,6 +8,8 @@ import "./stylesheet/navbar.css";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import PlaylistPage from "./components/PlaylistPage";
+import Song from "./components/Song";
+import Search from "./components/search";
 
 class App extends Component {
   render() {
@@ -20,7 +22,9 @@ class App extends Component {
 
           <div className="midSection">
             <Switch>
+              <Route path="/" exact component={Search} />
               <Route path="/playlist/:id" component={PlaylistPage} />
+              {/* <Route path="/song/:id" component={Song} /> */}
             </Switch>
           </div>
         </div>
