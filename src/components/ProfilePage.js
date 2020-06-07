@@ -9,6 +9,7 @@ const ProfilePage = props => {
     <div className="profilepage">
       <div className="part1">
         <img className="profilepic" alt="profile" src={user.image} />
+
         <div className="profinfo">
           <h2 className="prof1">User</h2>
           <h1 className="prof2">{user.name}</h1>

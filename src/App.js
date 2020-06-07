@@ -34,6 +34,7 @@ const App = () => {
               <Route path="/song/:id" component={SongPage} />
             </Switch>
           </div>
+
         </div>
       </BrowserRouter>
     </UserProvider>
