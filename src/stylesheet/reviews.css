@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@1,300&display=swap');
+.reviews{
+    height: 70px;
+    width: 400px;
+    border: 1px solid #ffffff;
+    
+}
+.reviewpic{
+    float: left;
+    height:68px;
+    width:68px;
+}
+.reviewtext{
+    padding-top: 8px;
+    padding-left: 5px;
+    height:40px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: 'Merriweather Sans', sans-serif;
+}

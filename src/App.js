@@ -4,11 +4,13 @@ import "./stylesheet/styles.css";
 import "./stylesheet/sidebar.css";
 import "./stylesheet/playlist.css";
 import "./stylesheet/playlistpage.css";
+import "./stylesheet/songpage.css";
 import "./stylesheet/navbar.css";
 import "./stylesheet/profilepage.css";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import PlaylistPage from "./components/PlaylistPage";
+import SongPage from "./components/SongPage";
 import ProfilePage from "./components/ProfilePage";
 
 class App extends Component {
@@ -22,7 +24,7 @@ class App extends Component {
 
           <div className="midSection">
             <Switch>
-              <Route path="/playlist/:id" component={ProfilePage} />
+              <Route path="/playlist/:id" component={SongPage} />
             </Switch>
           </div>
         </div>

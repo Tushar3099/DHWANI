@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Quicksand:wght@300;500&family=Rajdhani:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@1,300&display=swap');
+.songpage{
+    position: absolute;
+	top: 8%;
+    left: 12%;
+    width:77%;
+    text-align: center;
+}
+.song1{
+	background-image: linear-gradient(to bottom , rgba(76,76,76,1) 10%, rgba(64,64,64,1) 20%, rgba(5,4,5,1) 55%, rgba(72,73,74,1) 100%);
+	padding: 50px;
+	color: #ffffff;
+    overflow: auto;
+    text-align: left;
+    display: inline-block;
+}
+.block{
+    padding-top: 4px;
+}
+.songtext3{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 16px;
+}
+.songart{
+	float:left;
+	height: 300px;
+	width: 300px;
+	box-shadow: 0px 0px 18px 1px rgba(0,0,0,1);
+}
+.songconta{
+    float:left;
+    padding-left: 60px;
+    padding-top: 20px;
+	
+}
+.songtag{
+	text-transform: uppercase;
+	font-size: 22px;
+    font-family: 'Rajdhani', sans-serif;
+}
+.songname{
+	font-family: 'Abel', sans-serif;
+    font-size: 70px;
+   
+}
+.songtext1{
+	font-family: 'Quicksand', sans-serif;		
+	font-weight: 300;
+	font-size:19px;
+	padding-left: 5px;
+	display: inline;
+}
+.songtext2{
+	display:inline;
+	font-family: 'Quicksand', sans-serif;
+	padding-left: 6px;
+}
+.clickme{
+    display: block;
+    margin: 10px 20px 10px 400px ;
+    padding: 12px 24px 12px 24px;
+    border-radius: 30px;
+    border-width: 0px;
+    color: #ffffff;
+    background-color: blueviolet;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+}
+.conta2{
+    padding-top: 150px;
+    left: 80%;
+    color: #ffffff;
+}
+.conta3{
+    float: left;
+    color: #ffffff;
+    padding-left: 20px;
+    
+}
+.conta4{
+    float: left;
+    padding-left: 124px;
+
+}
+.lyrics{
+    margin-top: 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width:400px;
+    height:450px;
+
+}
+.reviewscroll{
+    height: 245px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    margin-top: 8px;
+}
+.revinput{
+    margin-top: 10px;
+    width: 400px;
+    height: 70px;
+    padding: 10px 20px 10px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.clickme2{
+    display: block;
+    margin: 5px 20px 10px 310px ;
+    padding: 10px 20px 10px 20px;
+    border-radius: 3px;
+    border-width: 0px;
+    color: #ffffff;
+    background-color: blueviolet;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+}
