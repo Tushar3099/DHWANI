@@ -15,35 +15,29 @@ import SongPage from "./components/SongPage";
 import ProfilePage from "./components/ProfilePage";
 import Search from "./components/search";
 
+import { UserProvider } from "./userContext";
+
 const App = () => {
-  const user = {
-    image:
-      "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png",
-    email: "rdj@gmail.com",
-    username: "Robert Downie Jr.",
-    bio: "You know who I am"
-  };
-
   return (
-    <BrowserRouter>
-      <Route path="/" component={Navbar} />
+    <UserProvider>
+      <BrowserRouter>
+        <Route path="/" component={Navbar} />
 
-      <div className="section">
-        <Route path="/" component={Sidebar} />
+        <div className="section">
+          <Route path="/" component={Sidebar} />
 
-        <div className="midSection">
-          <Switch>
-            <Route path="/" exact component={Search} />
-            <Route path="/playlist/:id" component={PlaylistPage} />
-            <Route
-              path="/profile/:id"
-              render={props => <ProfilePage {...props} user={user} />}
-            />
-            <Route path="/song/:id" component={SongPage} />
-          </Switch>
+          <div className="midSection">
+            <Switch>
+              <Route path="/" exact component={Search} />
+              <Route path="/playlist/:id" component={PlaylistPage} />
+              <Route path="/profile/:id" component={ProfilePage} />
+              <Route path="/song/:id" component={SongPage} />
+            </Switch>
+          </div>
+
         </div>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </UserProvider>
   );
 };
 
