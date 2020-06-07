@@ -107,6 +107,10 @@
   letter-spacing: 2px;
 }
 
+.navbar .left .brand .logo {
+  transform: rotateZ(90deg);
+}
+
 .navbar .center input {
   width: 80%;
   height: 35px;

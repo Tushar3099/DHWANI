@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Headset } from "@material-ui/icons";
 
 const Sidebar = () => {
@@ -28,12 +29,14 @@ const Sidebar = () => {
           <div className="rect slideUp" />
         </div>
         <div className="left item">
-          <div className="brand">
-            <div className="logo">
-              <Headset style={{ height: "40px", width: "40px" }} />
+          <Link to="/">
+            <div className="brand">
+              <div className="logo">
+                <Headset style={{ height: "40px", width: "40px" }} />
+              </div>
+              <h5>hwani</h5>
             </div>
-            <h5>Dhwani</h5>
-          </div>
+          </Link>
         </div>
 
         <div className="center item">
