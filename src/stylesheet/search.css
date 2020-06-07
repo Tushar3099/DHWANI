@@ -1,47 +1,51 @@
 .search {
   background: rgba(0, 0, 0, 0.775);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  min-width: 300px;
+  width: 90%;
+  max-width: 677px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  padding: 50px;
   border-radius: 70px;
+  position: relative;
 }
 
 .search .searchBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   background: white;
   border-radius: 50px;
   padding-left: 10px;
   height: 50px;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
 }
 
 .search .searchBox input {
   border: none;
-  margin: 20px;
-  flex-grow: 1;
-  /* height :30px; */
   font-size: 1.25em;
   font-family: "Roboto Condensed", sans-serif;
+  background: white;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+  width: 70%;
 }
 
 .search .searchBox input:focus {
   outline: none;
 }
 
+.search .searchBox .optionBox {
+  position: absolute;
+  right: 0;
+  width: 22.5%;
+  min-width: 100px;
+}
+
 .search .searchBox .optionBox .type {
-  flex-grow: 1;
   background: black;
   color: white;
   height: 50px;
-  width: 130px;
   border-radius: 50px;
   border: 2px solid white;
   display: flex;
@@ -49,13 +53,20 @@
   align-items: center;
   padding: 20px;
   cursor: pointer;
+  width: 100%;
 }
 
-.search .searchBox .optionBox {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.search .searchBox .optionBox .type h3 {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.search .searchBox .optionBox .type svg {
+  transition: 0.3s all;
+}
+
+.search .searchBox .optionBox .type svg.active {
+  transform: rotateZ(180deg);
 }
 
 .search .searchBox .optionBox .options {
@@ -63,7 +74,7 @@
   background: white;
   top: 50px;
   list-style: none;
-  width: 130px;
+  width: 100%;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -90,15 +101,16 @@
   font-weight: 600;
   font-size: 1.15em;
   height: 50px;
-  width: 130px;
   border-radius: 50px;
   border: 2px solid black;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
   transition: 0.3s all;
   cursor: pointer;
+  position: absolute;
+  right: 0;
+  width: 20%;
 }
 
 .search button:hover {
@@ -113,10 +125,7 @@
   display: flex;
 }
 
-.search .searchBox .optionBox .type svg {
-  transition: 0.3s all;
-}
-
-.search .searchBox .optionBox .type svg.active {
-  transform: rotateZ(180deg);
+@media screen and (max-width: 700px) {
+  .search {
+  }
 }
