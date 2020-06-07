@@ -3,11 +3,11 @@ import "../stylesheet/card.css";
 import Card from "./Card";
 
 const ProfilePage = props => {
-  const { email, username, bio } = props.user;
+  const { email, username, bio, image } = props.user;
   return (
     <div className="profilepage">
       <div className="part1">
-        <img className="profilepic" alt="profile" src={require("./rdj.jpg")} />
+        <img className="profilepic" alt="profile" src={image} />
         <div className="profinfo">
           <h2 className="prof1">User</h2>
           <h1 className="prof2">{username}</h1>
