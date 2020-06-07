@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Headset } from "@material-ui/icons";
+import { UserContext } from "../userContext";
 
-const Sidebar = () => {
-  const toggleSidebar = () => {
-    const sidebar = document.querySelector(".sidebar");
-    const midSection = document.querySelector(".midSection");
-    sidebar.classList.toggle("sidebar-active");
-    midSection.classList.toggle("section-active");
-  };
+const toggleSidebar = () => {
+  const sidebar = document.querySelector(".sidebar");
+  const midSection = document.querySelector(".midSection");
+  sidebar.classList.toggle("sidebar-active");
+  midSection.classList.toggle("section-active");
+};
 
-  const toggleProfile = () => {
-    const dropdown = document.querySelector(".dropdown");
-    dropdown.classList.toggle("dropdown-active");
-  };
+const toggleProfile = () => {
+  const dropdown = document.querySelector(".dropdown");
+  dropdown.classList.toggle("dropdown-active");
+};
+
+const Navbar = () => {
+  const [user, setUser] = useContext(UserContext);
 
   return (
     <>
@@ -45,11 +48,8 @@ const Sidebar = () => {
 
         <div className="right item">
           <div className="profile" onClick={toggleProfile}>
-            <img
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <h5>Tushar</h5>
+            <img src={user.image} alt="user" />
+            <h5>{user.name}</h5>
             <div className="dropdown">
               <Link to="/profile/:id">
                 <li>Profile</li>
@@ -65,4 +65,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Navbar;

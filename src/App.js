@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./stylesheet/styles.css";
 import "./stylesheet/sidebar.css";
@@ -15,36 +15,28 @@ import SongPage from "./components/SongPage";
 import ProfilePage from "./components/ProfilePage";
 import Search from "./components/search";
 
+import { UserProvider } from "./userContext";
 
 const App = () => {
-  const user = {
-    email: "rdj@gmail.com",
-    username: "Robert Downie Jr.",
-    bio: "You know who I am"
-  };
-
   return (
-    <BrowserRouter>
-      <Route path="/" component={Navbar} />
+    <UserProvider>
+      <BrowserRouter>
+        <Route path="/" component={Navbar} />
 
-      <div className="section">
-        <Route path="/" component={Sidebar} />
-
-        <div className="midSection">
-          <Switch>
-            <Route path="/" exact component={Search} />
-            <Route path="/playlist/:id" component={PlaylistPage} />
-            { <Route path="/song/:id" component={SongPage} />}
+        <div className="section">
+          <Route path="/" component={Sidebar} />
 
           <div className="midSection">
             <Switch>
-              <Route path="/playlist/:id" component={SongPage} />
+              <Route path="/" exact component={Search} />
+              <Route path="/playlist/:id" component={PlaylistPage} />
+              <Route path="/profile/:id" component={ProfilePage} />
+              <Route path="/song/:id" component={SongPage} />
             </Switch>
           </div>
-          </Switch>
         </div>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </UserProvider>
   );
 };
 
