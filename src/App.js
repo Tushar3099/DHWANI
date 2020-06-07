@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./stylesheet/styles.css";
 import "./stylesheet/sidebar.css";
@@ -15,9 +15,10 @@ import SongPage from "./components/SongPage";
 import ProfilePage from "./components/ProfilePage";
 import Search from "./components/search";
 
-
 const App = () => {
   const user = {
+    image:
+      "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png",
     email: "rdj@gmail.com",
     username: "Robert Downie Jr.",
     bio: "You know who I am"
@@ -34,13 +35,11 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={Search} />
             <Route path="/playlist/:id" component={PlaylistPage} />
-            { <Route path="/song/:id" component={SongPage} />}
-
-          <div className="midSection">
-            <Switch>
-              <Route path="/playlist/:id" component={SongPage} />
-            </Switch>
-          </div>
+            <Route
+              path="/profile/:id"
+              render={props => <ProfilePage {...props} user={user} />}
+            />
+            <Route path="/song/:id" component={SongPage} />
           </Switch>
         </div>
       </div>
