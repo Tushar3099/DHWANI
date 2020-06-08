@@ -6,7 +6,7 @@ const LoginPage = () =>{
                 <h1 className = 'formtop'>Login</h1>
                 <div>
                 <h2 className = 'formfield'>Username</h2>
-                <input className = 'forminput' type = 'text' placeholder = 'username' name = 'username'/>
+                <input className = 'forminput' type = 'text' placeholder = 'Username' name = 'username'/>
                 </div>
                 <div>
                 <h2 className = 'formfield'>Password</h2>
