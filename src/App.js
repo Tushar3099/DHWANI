@@ -33,8 +33,8 @@ const App = () => {
           <div className="midSection">
             <Switch>
               <Route path="/" exact component={Search} />
-              <Route path="/playlist/:id" component={LoginPage} />
-              <Route path="/profile/:id" component={SignupPage} />
+              <Route path="/playlist/:id" component={PlaylistPage} />
+              <Route path="/profile/:id" component={ProfilePage} />
               <Route path="/song/:id" component={SongPage} />
             </Switch>
           </div>
