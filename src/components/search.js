@@ -33,7 +33,7 @@ const Search = () => {
             <li onClick={e => setType("Song")}>Song</li>
             <li onClick={e => setType("Artist")}>Artist</li>
             <li onClick={e => setType("Mood")}>Mood</li>
-            <li onClick={e => setType("Genre")}>Genre</li>
+            <li onClick={e => setType("Genre") ()}>Genre</li>
           </div>
         </div>
       </div>

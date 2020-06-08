@@ -8,12 +8,16 @@ import "./stylesheet/songpage.css";
 import "./stylesheet/navbar.css";
 import "./stylesheet/profilepage.css";
 import "./stylesheet/search.css";
+import "./stylesheet/loginpage.css";
+import "./stylesheet/signuppage.css";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import PlaylistPage from "./components/PlaylistPage";
 import SongPage from "./components/SongPage";
 import ProfilePage from "./components/ProfilePage";
 import Search from "./components/search";
+import LoginPage from "./components/LoginPage";
+import SignupPage from "./components/SignupPage";
 
 import { UserProvider } from "./userContext";
 
@@ -29,8 +33,8 @@ const App = () => {
           <div className="midSection">
             <Switch>
               <Route path="/" exact component={Search} />
-              <Route path="/playlist/:id" component={PlaylistPage} />
-              <Route path="/profile/:id" component={ProfilePage} />
+              <Route path="/playlist/:id" component={LoginPage} />
+              <Route path="/profile/:id" component={SignupPage} />
               <Route path="/song/:id" component={SongPage} />
             </Switch>
           </div>
