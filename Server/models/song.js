@@ -23,6 +23,10 @@ var songSchema= new mongoose.Schema({
         type: String,
         default:"https://assets.audiomack.com/default-song-image.jpg"
     },
+    duration:{
+        type: Number,
+        default: 5.05
+    }
 });
 
 module.exports = mongoose.model("Song",songSchema);

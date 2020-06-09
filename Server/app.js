@@ -15,7 +15,7 @@ var seedDB=require("./seed");
 var IndexRoutes=require("./routes/IndexRoute");
 var SongRoutes=require("./routes/songsRoute");
 // var ArtistRoutes=require("./routes/ArtistRoute");
-// var ReviewRoutes=require("./routes/reviewsRoute");
+var ReviewRoutes=require("./routes/reviewsRoute");
 var PlaylistRoutes=require("./routes/playlistRoute");
 // var ModeratorRoutes=require("./routes/ModeratorRoute");
 
@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 app.use(IndexRoutes);
-app.use("/song",SongRoutes);
+app.use(SongRoutes);
 // app.use("/artists",ArtistRoutes);
-// app.use("/songs/:id/reviews", ReviewRoutes);
+app.use(ReviewRoutes);
 app.use(PlaylistRoutes);
 // app.use(ModeratorRoutes);
 

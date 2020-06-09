@@ -17,112 +17,114 @@ router.get("/search/:type/:keyword",(req,res) => {
         if(type.toLowerCase()=="song")
         {
 
-            Song.find({name: { "$regex": keyword, "$options": "i" }}).populate('artist','fullname').exec(function(err,song){
+            Song.find({name: { "$regex": keyword, "$options": "i" }}).populate('artist','fullname').exec(async function(err,song){
             // Song.find({name: new RegExp('\\b' + keyword + '\\b', 'i')}).populate('artist','fullname').exec(function(err,song){
-                song.forEach(function(song){
+                await song.forEach(async function(song){
                     var art=[];
-                    song.artist.forEach(function(artist){
+                    await song.artist.forEach( function(artist){
                         art.push(artist.fullname);
                     });
-                    sdata.push({
+                    await sdata.push({
                         _id: song._id,
                         name: song.name,
                         artist: art,
                         image: song.image,
                         rating: song.rating,
                         genre: song.genre,
-                        mood: song.mood
-
-                    });
-                });
-                res.send(sdata);
+                        mood: song.mood,
+                        duration: song.duration     
+                    });      
+               });
+                await res.send(sdata);
                 // console.log(song)
             });
             
         }
         if(type.toLowerCase()=="artist"){
-            Song.find({}).populate('artist','fullname').exec(function(err,songs){
-                songs.forEach(function(song){
-                    song.artist.forEach(function(artist){
+            Song.find({}).populate('artist','fullname').exec(async function(err,songs){
+                await songs.forEach(function(song){
+                    song.artist.forEach(async function(artist){
                         // var regx=/artist.fullname/i;
                         var regx=new RegExp(keyword, 'i')
                             if(regx.test(artist.fullname)){
                                 // console.log("aa");
                                 var art=[];
-                                song.artist.forEach(function(artist){
+                                await song.artist.forEach(function(artist){
                                     art.push(artist.fullname);
                                 });
-                                sdata.push({
+                                await sdata.push({
                                     _id: song._id,
                                     name: song.name,
                                     artist: art,
                                     image: song.image,
                                     rating: song.rating,
                                     genre: song.genre,
-                                    mood: song.mood
-
-                                });
-                        }
-                    })
-                    
+                                    mood: song.mood,
+                                    duration: song.duration
+                                });     
+                       }
+                    }) 
                 });
                 // songs.find({"artist.fullname" : { "$regex": keyword, "$options": "i" }},function(err,results){
-                res.send(sdata);
+                await res.send(sdata);
                 });
             
         }
         if(type.toLowerCase()=="mood"){
-            Song.find({},function(err,songs){
-                songs.forEach(function(song){
-                    song.mood.forEach(function(mood){
+            Song.find({}).populate('artist','fullname').exec(async function(err,songs){
+                await songs.forEach( function(song){
+                    song.mood.forEach(async function(mood){
                         var regx=new RegExp(keyword, 'i')
                             if(regx.test(mood)){
-                                var art=[];
-                                song.artist.forEach(function(artist){
-                                    art.push(artist.fullname);
-                                });
-                                sdata.push({
-                                    _id: song._id,
-                                    name: song.name,
-                                    artist: art,
-                                    image: song.image,
-                                    rating: song.rating,
-                                    genre: song.genre,
-                                    mood: song.mood
-
-                                });
+                                    var art=[];
+                                    await song.artist.forEach(function(artist){
+                                        art.push(artist.fullname);
+                                        // console.log(artist.fullname);
+                                     });
+                                    await sdata.push({
+                                        _id: song._id,
+                                        name: song.name,
+                                        artist: art,
+                                        image: song.image,
+                                        rating: song.rating,
+                                        genre: song.genre,
+                                        mood: song.mood,
+                                        duration: song.duration
+                                    });     
+                                    
                         }
                     });
                     
                 });
-                res.send(sdata);
+                await res.send(sdata);
             });
             
         }
         if(type.toLowerCase()=="genre"){
-            Song.find({},function(err,songs){
-                songs.forEach(function(song){
-                    song.genre.forEach(function(genre){
+            Song.find({}).populate('artist','fullname').exec(async function(err,songs){
+                await songs.forEach(function(song){
+                    song.genre.forEach(async function(genre){
                         var regx=new RegExp(keyword, 'i')
                             if(regx.test(genre)){
                                 var art=[];
-                                song.artist.forEach(function(artist){
+                                await song.artist.forEach(function(artist){
                                     art.push(artist.fullname);
                                 });
-                                sdata.push({
+                                await sdata.push({
                                     _id: song._id,
                                     name: song.name,
                                     artist: art,
                                     image: song.image,
                                     rating: song.rating,
                                     genre: song.genre,
-                                    mood: song.mood
+                                    mood: song.mood,
+                                    duration: song.duration                                    
 
                                 });
                         }
                     });      
                 });
-                res.send(sdata);
+                await res.send(sdata);
            });    
         }
 });
