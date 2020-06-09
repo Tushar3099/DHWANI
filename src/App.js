@@ -36,6 +36,8 @@ const App = () => {
               <Route path="/playlist/:id" component={PlaylistPage} />
               <Route path="/profile/:id" component={ProfilePage} />
               <Route path="/song/:id" component={SongPage} />
+              <Route path="/login/:id" component={LoginPage} />
+              <Route path="/signup/:id" component={SignupPage} />
             </Switch>
           </div>
 
