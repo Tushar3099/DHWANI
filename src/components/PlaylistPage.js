@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import PlaylistInfo from "./PlaylistInfo";
 import ListHead from "./ListHead";
 import ListItems from "./ListItems";
 import "../stylesheet/playlistinfo.css";
 import "../stylesheet/listitems.css";
-const PlaylistPage = ({ songs }) => {
+const PlaylistPage = () => {
+	const [songs, setSongs] = useState([
+		{
+			artist: 'Post Malone',
+			songname: 'Sunflower',
+			id: 'abc123',
+			duration: '4:00',
+			mood: 'Chill',
+			genre: 'Pop'
+		}
+	]);
 	return(
 		<div className='playlistcont'>
 			<PlaylistInfo 
@@ -13,38 +23,16 @@ const PlaylistPage = ({ songs }) => {
 		   	author='Aayush'
 		   	/>
 		   	<ListHead/>
+			{songs.map(song => (
 		   <ListItems 
-		   	artist = 'Post Malone'
-			name = 'Sunflower'
-			id = 'abc123'
-			duration = '4:00'
-			mood = 'Chill'
-			genre = 'Pop'
+		   	key = {song.id}   
+			artist = {song.artist}
+			songname = {song.songname}
+			duration = {song.duration}
+			mood = {song.mood}
+			genre = {song.genre}
 		   />
-		   <ListItems 
-		   	artist = 'Post Malone'
-			name = 'Sunflower'
-			id = 'abc123'
-			duration = '4:00'
-			mood = 'Chill'
-			genre = 'Pop'
-		   />
-		   <ListItems 
-		   	artist = 'Post Malone'
-			name = 'Sunflower'
-			id = 'abc123'
-			duration = '4:00'
-			mood = 'Chill'
-			genre = 'Pop'
-		   />
-		   <ListItems 
-		   	artist = 'Post Malone'
-			name = 'Sunflower'
-			id = 'abc123'
-			duration = '4:00'
-			mood = 'Chill'
-			genre = 'Pop'
-		   />
+			))}
 		</div>
 	);
 }
