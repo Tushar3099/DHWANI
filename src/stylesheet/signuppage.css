@@ -23,9 +23,7 @@
 
 .formtop{
 	font-family: 'Abel', sans-serif;
-    font-size: 40px;
-    
-   
+    font-size: 40px;   
 }
 .formfield{
     font-size: 15px;
@@ -51,6 +49,6 @@ select:focus{
     border: 3px solid blueviolet;
 }
 
-input:focus{
+.signupbox input:focus{
     border: 3px solid blueviolet;
 }

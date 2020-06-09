@@ -10,6 +10,7 @@ import "./stylesheet/profilepage.css";
 import "./stylesheet/search.css";
 import "./stylesheet/loginpage.css";
 import "./stylesheet/signuppage.css";
+import "./stylesheet/addsong.css";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import PlaylistPage from "./components/PlaylistPage";
@@ -18,8 +19,9 @@ import ProfilePage from "./components/ProfilePage";
 import Search from "./components/search";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
-
+import AddSong from "./components/AddSong";
 import { UserProvider } from "./userContext";
+
 
 const App = () => {
   return (
@@ -39,6 +41,7 @@ const App = () => {
               <Route path="/login/:id" component={LoginPage} />
               <Route path="/signup/:id" component={SignupPage} />
             </Switch>
+              <Route path="/addsong/:id" component={AddSong} />
           </div>
 
         </div>
