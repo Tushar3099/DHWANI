@@ -1,27 +1,21 @@
-import React from 'react';
+import React, { useState } from "react";
 
-class Upload extends React.Component {
-    constructor(props){
-      super(props)
-      this.state = {
-        file: null
-      }
-      this.handleChange = this.handleChange.bind(this)
-    }
-    handleChange(event) {
-      this.setState({
-        file: URL.createObjectURL(event.target.files[0])
-      })
-    }
-    render() {
-      return (
-        <div>
-          <input className = 'forminput' type="file" onChange={this.handleChange}/>
-          <div>
-          <img className = 'uppic' src={this.state.file}/>
-          </div>
-        </div>
-      );
-    }
-  }
-  export default Upload;
+
+const Upload = ({ file, onchange }) => {
+  return (
+    <>
+      <input
+        className="forminput"
+        type="file"
+        name="image"
+        onChange={onchange}
+      />
+      <div class="img">
+        <img className="pic" src={file} />
+
+      </div>
+    </>
+  );
+};
+
+export default Upload;

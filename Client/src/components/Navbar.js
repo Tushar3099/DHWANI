@@ -15,22 +15,51 @@ const toggleProfile = () => {
   dropdown.classList.toggle("dropdown-active");
 };
 
+const User = ({ user }) => {
+  if (user)
+    return (
+      <div className="profile" onClick={toggleProfile}>
+        <img src={user.image} alt="user" />
+        <h5>{user.name}</h5>
+        <div className="dropdown">
+          <Link to="/profile/:id">
+            <li>Profile</li>
+          </Link>
+          <Link>
+            <li>Logout</li>
+          </Link>
+        </div>
+      </div>
+    );
+
+  return <></>;
+};
+
+const Hamburger = ({ user }) => {
+  if (user)
+    return (
+      <div
+        className="hamburger"
+        onClick={() => {
+          toggleSidebar(user);
+        }}
+      >
+        <div className="rect slideDown" />
+        <div className="rect slideLeft" />
+        <div className="rect slideUp" />
+      </div>
+    );
+
+  return <></>;
+};
+
 const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
 
   return (
     <>
       <div className="navbar navbar-active">
-        <div
-          className="hamburger"
-          onClick={() => {
-            toggleSidebar();
-          }}
-        >
-          <div className="rect slideDown" />
-          <div className="rect slideLeft" />
-          <div className="rect slideUp" />
-        </div>
+        <Hamburger user={user} />
         <div className="left item">
           <Link to="/">
             <div className="brand">
@@ -47,18 +76,7 @@ const Navbar = () => {
         </div>
 
         <div className="right item">
-          <div className="profile" onClick={toggleProfile}>
-            <img src={user.image} alt="user" />
-            <h5>{user.name}</h5>
-            <div className="dropdown">
-              <Link to="/profile/:id">
-                <li>Profile</li>
-              </Link>
-              <Link>
-                <li>Logout</li>
-              </Link>
-            </div>
-          </div>
+          <User user={user} />
         </div>
       </div>
     </>

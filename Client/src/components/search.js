@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../stylesheet/search.css";
 import { KeyboardArrowDown } from "@material-ui/icons";
+import { SongContext } from "../songContext";
 
-const Search = () => {
+const Search = ({ onsearch }) => {
   const typeClick = () => {
     const options = document.querySelector(".options");
     const svg = document.querySelector(".type svg");
@@ -11,19 +12,20 @@ const Search = () => {
     svg.classList.toggle("active");
   };
 
-  const data = [
-    {
-      name: "Jo bheji thi Dua",
-      artist: "Arijit Singh"
-    }
-  ];
+  const { songText, songType } = useContext(SongContext);
 
-  const [type, setType] = useState("Song");
+  const [type, setType] = songType;
+  const [text, setText] = songText;
 
   return (
     <div className="search">
       <div className="searchBox">
-        <input placeholder="Search..." type="text" />
+        <input
+          placeholder="Search..."
+          value={text}
+          onChange={e => setText(e.target.value)}
+          type="text"
+        />
         <div className="optionBox">
           <div className="type" onClick={() => typeClick()}>
             <h3>{type}</h3>
@@ -33,11 +35,11 @@ const Search = () => {
             <li onClick={e => setType("Song")}>Song</li>
             <li onClick={e => setType("Artist")}>Artist</li>
             <li onClick={e => setType("Mood")}>Mood</li>
-            <li onClick={e => setType("Genre") ()}>Genre</li>
+            <li onClick={e => setType("Genre")}>Genre</li>
           </div>
         </div>
       </div>
-      <button>Search</button>
+      <button onClick={onsearch}>Search</button>
     </div>
   );
 };
