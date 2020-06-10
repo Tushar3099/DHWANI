@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import Icon from "@material-ui/core/Icon";
 import Playlist from "./Playlist";
-
+import {TokenContext} from '../tokenContext'
 const clickPlaylist = e => {
   const lightbox = document.querySelector(".lightbox");
   lightbox.classList.add("active");
@@ -17,37 +17,52 @@ const clickLightbox = e => {
 const Sidebar = () => {
   const [playlist, setPlaylist] = useState([]);
   const [playlistName, setPlaylistName] = useState("");
+  const [token,setToken] = useContext(TokenContext)
 
   useEffect(() => {
-    setPlaylist([
-      {
-        img:
-          "https://images.squarespace-cdn.com/content/v1/518c10f0e4b03bb726afb55b/1386192990293-3WOYETVWFC0GJMFWH4BU/ke17ZwdGBToddI8pDm48kEYCq63vK5QS_A9RzvEPj41Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIihyGJh09w428tOY5g-FioOhFDyb8wchSiZQN0Pk_Z2c/SP-Website-Music-Editing-Thumbnail.png?format=1000w",
-        name: "Sad Sufi",
-        id: 11238872784
+    console.log(`Bearer ${token}`);
+    fetch("/playlist", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization" : `Bearer ${token}`
       },
-      {
-        img:
-          "https://images.squarespace-cdn.com/content/v1/518c10f0e4b03bb726afb55b/1386192990293-3WOYETVWFC0GJMFWH4BU/ke17ZwdGBToddI8pDm48kEYCq63vK5QS_A9RzvEPj41Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIihyGJh09w428tOY5g-FioOhFDyb8wchSiZQN0Pk_Z2c/SP-Website-Music-Editing-Thumbnail.png?format=1000w",
-        name: "Happy Birthday",
-        id: 11238888498
-      },
-      {
-        img:
-          "https://images.squarespace-cdn.com/content/v1/518c10f0e4b03bb726afb55b/1386192990293-3WOYETVWFC0GJMFWH4BU/ke17ZwdGBToddI8pDm48kEYCq63vK5QS_A9RzvEPj41Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIihyGJh09w428tOY5g-FioOhFDyb8wchSiZQN0Pk_Z2c/SP-Website-Music-Editing-Thumbnail.png?format=1000w",
-        name: "Happy Birthday",
-        id: 11238888498
-      },
-      {
-        img:
-          "https://images.squarespace-cdn.com/content/v1/518c10f0e4b03bb726afb55b/1386192990293-3WOYETVWFC0GJMFWH4BU/ke17ZwdGBToddI8pDm48kEYCq63vK5QS_A9RzvEPj41Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIihyGJh09w428tOY5g-FioOhFDyb8wchSiZQN0Pk_Z2c/SP-Website-Music-Editing-Thumbnail.png?format=1000w",
-        name: "Happy Birthday",
-        id: 11238888498
-      }
-    ]);
+    })
+      .then((res) => res.json())
+      .then(async (data) => {
+        if (data.error) {
+          return;
+        }
+        console.log(data);
+        await setPlaylist(data)
+        console.log("I M FETCHED"); 
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const addPlaylist = () => {
+    console.log(playlistName);
+    fetch("/playlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization" : `Bearer ${token}`,
+      },
+      body : JSON.stringify({
+        name : playlistName
+    })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        console.log("I M FETCHED"); 
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     const lightbox = document.querySelector(".lightbox");
     lightbox.classList.remove("active");
   };

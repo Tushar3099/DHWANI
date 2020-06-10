@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Headset } from "@material-ui/icons";
 import { UserContext } from "../userContext";
+import { TokenContext } from "../tokenContext";
 
 const toggleSidebar = () => {
   const sidebar = document.querySelector(".sidebar");
@@ -15,25 +16,10 @@ const toggleProfile = () => {
   dropdown.classList.toggle("dropdown-active");
 };
 
-const User = ({ user }) => {
-  if (user)
-    return (
-      <div className="profile" onClick={toggleProfile}>
-        <img src={user.image} alt="user" />
-        <h5>{user.name}</h5>
-        <div className="dropdown">
-          <Link to="/profile/:id">
-            <li>Profile</li>
-          </Link>
-          <Link>
-            <li>Logout</li>
-          </Link>
-        </div>
-      </div>
-    );
 
-  return <></>;
-};
+
+
+
 
 const Hamburger = ({ user }) => {
   if (user)
@@ -55,6 +41,32 @@ const Hamburger = ({ user }) => {
 
 const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
+  const [token, setToken] = useContext(TokenContext);
+
+  const handleLogout = ()=> {
+    setUser(null);
+    setToken(null);
+  }
+
+  const User = ({ user }) => {
+    console.log(user);
+    console.log(token)
+    if (user)
+      return (
+        <div className="profile" onClick={toggleProfile}>
+          <img src={user.image} alt="user" />
+          <h5>{user.fullname}</h5>
+          <div className="dropdown">
+            <Link to="/profile/:id">
+              <li>Profile</li>
+            </Link>
+              <li onClick={handleLogout}>Logout</li>
+          </div>
+        </div>
+      );
+  
+    return <></>;
+  };
 
   return (
     <>

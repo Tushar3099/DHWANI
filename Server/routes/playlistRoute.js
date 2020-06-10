@@ -74,13 +74,13 @@ router.post("/playlist", requireLogin,function(req,res){
         vid2="5edf37648724f237e0d8f761";
     // console.log(req);
     var newp={
-        name: req.query.name,
+        name: req.body.name,
         createdBy: req.user._id,
         // createdBy: vid1
     }
     // console.log(newp);
     Playlist.create(newp,function(err,playlist){
-        res.redirect("/playlist/"+playlist._id);
+        res.send({ playlist : playlist});
     });
 });
 router.get("/playlist/:pid/song/:sid", requireLogin,function(req,res){
