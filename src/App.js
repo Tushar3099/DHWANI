@@ -23,6 +23,7 @@ import ProfilePage from "./components/ProfilePage";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import { UserProvider, UserContext } from "./userContext";
+import { SongProvider } from "./songContext";
 
 const renderPlaylistPage = ({ match }) => {
   const id = match.params.id;
@@ -42,6 +43,7 @@ const RenderUser = () => {
         <div className="midSection">
           <Switch>
             <Route path="/" exact component={Home} />
+
             <Route path="/playlist/:id" component={renderPlaylistPage} />
             <Route path="/profile/:id" component={ProfilePage} />
             <Route path="/song/:id" component={renderSongPage} />
@@ -71,14 +73,17 @@ const RenderAuth = () => {
 const App = () => {
   return (
     <UserProvider>
-      <BrowserRouter>
-        <Route path="/" component={Navbar} />
-        <div className="section">
-          <RenderAuth />
-          <RenderUser />
 
-        </div>
-      </BrowserRouter>
+      <SongProvider>
+        <BrowserRouter>
+          <Route path="/" component={Navbar} />
+          <div className="section">
+            <RenderAuth />
+            <RenderUser />
+          </div>
+        </BrowserRouter>
+      </SongProvider>
+
     </UserProvider>
   );
 };
