@@ -18,12 +18,6 @@ const AddSong = () => {
             </label>
             </div>
             <div className = 'inct'>
-            <input className = 'addsi' type = 'text' name = 'artist' required/>
-            <label for = 'artist' className = 'addslab'>
-            <span className = 'addsl'>Artist</span>
-            </label>
-            </div>
-            <div className = 'inct'>
             <input className = 'addsi' type = 'text' name = 'genre' required/>
             <label for = 'genre' className = 'addslab'>
             <span className = 'addsl'>Genre</span>
@@ -36,7 +30,7 @@ const AddSong = () => {
             </label>
             </div>
             <div className = 'inct'>
-            <input className = 'addsi' type = 'number' name = 'duration' required/>        
+            <input className = 'addsi' type = 'number' step = '.01' min = '0' name = 'duration' required/>        
             <label for = 'duration' className = 'addslab'>
             <span className = 'addsl'>Playtime</span>
             </label>

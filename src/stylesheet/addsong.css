@@ -29,9 +29,11 @@
     position: relative;
     height: 50px;
     width: 80%;
+    margin-top: 10px;
     overflow: hidden;
 }
 .inct2{
+    margin-top: 10px;
     position: relative;
     height: 130px;
     width: 80%;

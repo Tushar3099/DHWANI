@@ -1,7 +1,10 @@
 import React from 'react';
 
 const ModeratorPage = () =>{
-    return(<div></div>
+    return(
+        <div className = 'moderator'>
+            <h1></h1>
+        </div>
         
     );
 }
