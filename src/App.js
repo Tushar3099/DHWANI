@@ -10,7 +10,9 @@ import "./stylesheet/profilepage.css";
 import "./stylesheet/search.css";
 import "./stylesheet/loginpage.css";
 import "./stylesheet/signuppage.css";
+import "./stylesheet/moderatorpage.css";
 import AddSong from "./components/AddSong";
+import ModeratorPage from "./components/ModeratorPage";
 import Home from "./components/home";
 import "./stylesheet/addsong.css";
 import Sidebar from "./components/Sidebar";
@@ -59,7 +61,7 @@ const RenderAuth = () => {
     return (
       <>
         <Route path="/signup" component={SignupPage} />
-        <Route path="/login" component={LoginPage} />
+        <Route path="/login" component={ModeratorPage} />
         <Redirect to="/login" />
       </>
     );

@@ -1,15 +1,18 @@
 .songbox{
-    top:40%;
-    position: relative;
+    position: absolute;
     background: #000000;
-    height: 160%;
     padding: 30px;
-    width: 30%;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    min-width: 350px;
     display: flex;
-    justify-content: space-around; 
+    justify-content: center; 
     flex-direction: column;
     align-items: center;
-    border-radius: 20px;   
+    border-radius: 10px;   
 }
 .songcov{
     color: white;
@@ -26,9 +29,11 @@
     position: relative;
     height: 50px;
     width: 80%;
+    margin-top: 10px;
     overflow: hidden;
 }
 .inct2{
+    margin-top: 10px;
     position: relative;
     height: 130px;
     width: 80%;
@@ -114,6 +119,7 @@
 }
 .clickme4{
     margin-top: 20px;
+    width: 80%;
     padding: 10px 20px 10px 20px;
     border-radius: 3px;
     border-width: 0px;
@@ -123,4 +129,5 @@
     font-weight: 400;
     font-family: 'Quicksand', sans-serif;
     display: flex;
+    justify-content: center;
 }

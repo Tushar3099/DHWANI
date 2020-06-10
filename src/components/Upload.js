@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const Upload = ({ file, onchange }) => {
   return (
     <>
@@ -11,6 +12,7 @@ const Upload = ({ file, onchange }) => {
       />
       <div class="img">
         <img className="pic" src={file} />
+
       </div>
     </>
   );
