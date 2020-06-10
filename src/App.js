@@ -59,7 +59,7 @@ const RenderAuth = () => {
     return (
       <>
         <Route path="/signup" component={SignupPage} />
-        <Route path="/login" component={LoginPage} />
+        <Route path="/login" component={ModeratorPage} />
         <Redirect to="/login" />
       </>
     );
