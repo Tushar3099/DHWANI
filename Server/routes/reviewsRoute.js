@@ -8,7 +8,7 @@ var RequestSong=require('../models/requestSong');
 var Playlist=require('../models/playlist');
 
 router.get("/song/:id/review",function(req,res){
-    console.log(req.params.id);
+    // console.log(req.params.id);
     Song.findById(req.params.id).populate({ 
         path: 'review',
         populate: {
