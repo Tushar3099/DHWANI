@@ -6,9 +6,10 @@ var Review=require('../models/review');
 var Song=require('../models/song');
 var RequestSong=require('../models/requestSong');
 var Playlist=require('../models/playlist');
+var requireLogin = require('../middleware/requireLogin')
 
 
-router.get("/search/:type/:keyword",(req,res) => {
+router.get("/search/:type/:keyword", requireLogin,(req,res) => {
     var type=req.params.type;
     var keyword=req.params.keyword;
     // console.log(type);

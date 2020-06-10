@@ -6,13 +6,14 @@ var Review=require('../models/review');
 var Song=require('../models/song');
 var RequestSong=require('../models/requestSong');
 var Playlist=require('../models/playlist');
+var requireLogin = require('../middleware/requireLogin')
 
 var vid1="5edf37648724f237e0d8f760",
         vid2="5edf37648724f237e0d8f761";
-router.get("/",function(req,res){
+router.get("/", requireLogin,function(req,res){
     res.send("hi there it really works!");
 })
-router.get("/song/:id",function(req,res){
+router.get("/song/:id", requireLogin,function(req,res){
     Song.findById(req.params.id).populate('artist').populate('review').exec(async function(err,song){
         var ar=[];
         await song.artist.forEach(function(art){
@@ -41,7 +42,7 @@ router.get("/song/:id",function(req,res){
     });
 });
 
-router.post('/song',function(req,res){
+router.post('/song', requireLogin,function(req,res){
         if(req.user.type=="artist"){
             var art=[];
             // art.push(vid1);

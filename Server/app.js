@@ -17,12 +17,12 @@ var SongRoutes=require("./routes/songsRoute");
 // var ArtistRoutes=require("./routes/ArtistRoute");
 var ReviewRoutes=require("./routes/reviewsRoute");
 var PlaylistRoutes=require("./routes/playlistRoute");
-// var ModeratorRoutes=require("./routes/ModeratorRoute");
+var ModeratorRoutes=require("./routes/ModeratorRoute");
 
 //configuration
 mongoose.connect("mongodb://localhost:27017/Dhwaniv3",{useNewUrlParser:true, useUnifiedTopology:true});
 app.use(bodyParser.urlencoded({extended:true}));
-
+app.use(bodyParser.json())
 seedDB();
 
 
@@ -31,9 +31,9 @@ app.use(SongRoutes);
 // app.use("/artists",ArtistRoutes);
 app.use(ReviewRoutes);
 app.use(PlaylistRoutes);
-// app.use(ModeratorRoutes);
+app.use(ModeratorRoutes);
 
-
+app.use(require('./routes/auth'))
 
 
 app.listen(5000,function(err){

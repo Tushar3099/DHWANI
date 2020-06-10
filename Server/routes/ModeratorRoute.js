@@ -6,9 +6,11 @@ var Review=require('../models/review');
 var Song=require('../models/song');
 var RequestSong=require('../models/requestSong');
 var Playlist=require('../models/playlist');
+var requireLogin = require('../middleware/requireLogin')
 
-router.get('/admin',function(req,res){
-    RequestSong.find({}).populate('artist').exec(function(err,songs){
+router.get('/admin',requireLogin,function(req,res){
+    if(req.user.type === "moderator")
+    {RequestSong.find({}).populate('artist').exec(function(err,songs){
         var sdata=[];
         songs.forEach(function(song){
             var ar=[];
@@ -26,10 +28,13 @@ router.get('/admin',function(req,res){
             });
         });
         res.send(sdata);
-    });
+    });}
+    else
+    res.send("Go home kid");
 });
-router.get('/approve/:id',function(req,res){
-    RequestSong.findById(req.params.id,function(err,aprovedsong){
+router.get('/approve/:id',requireLogin,function(req,res){
+    if(req.user.type === "moderator")
+{    RequestSong.findById(req.params.id,function(err,aprovedsong){
         Song.create(approvedsong,function(err,data){
             if(!err){
                 RequestSong.findByIdAndRemove(req.params.id,function(err){
@@ -38,6 +43,9 @@ router.get('/approve/:id',function(req,res){
             }
             
         })
-    })
+    })}
+    else
+    res.send("Go home kid");
+
 })
 module.exports=router;

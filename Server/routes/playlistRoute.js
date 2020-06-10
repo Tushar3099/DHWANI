@@ -9,11 +9,15 @@ var Review=require('../models/review');
 var Song=require('../models/song');
 var RequestSong=require('../models/requestSong');
 var Playlist=require('../models/playlist');
+var requireLogin = require('../middleware/requireLogin')
 
-router.get("/playlist", function(req,res){
+// router.use(requireLogin);
+
+router.get("/playlist", requireLogin, function(req,res){
     var vid1="5edf37648724f237e0d8f760",
     vid2="5edf37648724f237e0d8f761";
     // Playlist.find({createdBy:vid1},(err,playlists)=>{
+        console.log(req.user);
     Playlist.find({createdBy:req.user._id},(err,playlists)=>{
         if(err){
             console.log(err);
@@ -32,7 +36,7 @@ router.get("/playlist", function(req,res){
         res.send(sdata);
     });
 });
-router.get("/playlist/:id",function(req,res){
+router.get("/playlist/:id", requireLogin,function(req,res){
     Playlist.findById(req.params.id).populate('songs').populate('createdBy').exec(function(err,play){
         // console.log(play.createdBy);
         var vid1="5edf37648724f237e0d8f760",
@@ -65,7 +69,7 @@ router.get("/playlist/:id",function(req,res){
 
     });
 });
-router.post("/playlist",function(req,res){
+router.post("/playlist", requireLogin,function(req,res){
     var vid1="5edf37648724f237e0d8f760",
         vid2="5edf37648724f237e0d8f761";
     // console.log(req);
@@ -79,7 +83,7 @@ router.post("/playlist",function(req,res){
         res.redirect("/playlist/"+playlist._id);
     });
 });
-router.get("/playlist/:pid/song/:sid",function(req,res){
+router.get("/playlist/:pid/song/:sid", requireLogin,function(req,res){
     Playlist.findById(req.params.pid,function(err,playlist){
         var vid1="5edf37648724f237e0d8f760",
     vid2="5edf37648724f237e0d8f761";
