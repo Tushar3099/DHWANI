@@ -1,7 +1,12 @@
 ## Indian Institute of Information Technology and Management, Gwalior
 ## IPG-MBA
 ## Submitted to - Prof. Santosh Rathore
-## Submitted By - 2018IMG-066 (Tushar Neogi) , 2018IMG-001 (Aayush Singh), 2018IMG-070 (Vedant Tripathi), 2018IMG-026
+## Submitted By - 
+## 2018IMG-066 (Tushar Neogi) 
+## 2018IMG-001 (Aayush Singh)
+## 2018IMG-070 (Vedant Tripathi)
+## 2018IMG-026
+
 ## DHWANI
 This is song rating and review website with fully functional frontend and backend. To run the project successfully on local server, an active internet connection is required for installing node and react on the system.
 Now the following scripts can be used to run the project.
