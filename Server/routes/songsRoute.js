@@ -7,6 +7,8 @@ var Song=require('../models/song');
 var RequestSong=require('../models/requestSong');
 var Playlist=require('../models/playlist');
 
+var vid1="5edf37648724f237e0d8f760",
+        vid2="5edf37648724f237e0d8f761";
 router.get("/",function(req,res){
     res.send("hi there it really works!");
 })
@@ -17,8 +19,7 @@ router.get("/song/:id",function(req,res){
             ar.push(art.fullname);
         });
         var userRating;
-        var vid1="5edf37648724f237e0d8f760",
-        vid2="5edf37648724f237e0d8f761";
+        
         await song.review.forEach(function(rev){
             if(rev.createdBy==vid2){
             // if(rev.createdBy==req.user._id){
@@ -38,6 +39,33 @@ router.get("/song/:id",function(req,res){
 
         });
     });
+});
+
+router.post('/song',function(req,res){
+        if(req.user.type=="artist"){
+            var art=[];
+            // art.push(vid1);
+            art.push(req.user._id);
+            var gen=[];
+            gen.push(req.query.genre);
+            var mood=[];
+            gen.push(req.query.mood);
+            var dat={
+                name: req.query.songname, 
+                artist: art,
+                genre: gen ,
+                mood: mood,
+                lyrics: req.query.lyrics,
+                image: req.query.image,
+                duration: req.query.duration
+            }
+            RequestSong.create(dat,function(err,savedSong){
+                res.send("Request has been made to add song");
+            });
+        }
+        else{
+            res.send("You are not a Artist! make a artist account to continue");
+        }
 });
 
 module.exports=router;
