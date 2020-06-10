@@ -23,7 +23,7 @@ var PlaylistRoutes=require("./routes/playlistRoute");
 mongoose.connect("mongodb://localhost:27017/Dhwaniv3",{useNewUrlParser:true, useUnifiedTopology:true});
 app.use(bodyParser.urlencoded({extended:true}));
 
-// seedDB();
+seedDB();
 
 
 app.use(IndexRoutes);
@@ -36,7 +36,7 @@ app.use(PlaylistRoutes);
 
 
 
-app.listen(3000,function(err){
+app.listen(5000,function(err){
     if(err){
         console.log(err);
     }
