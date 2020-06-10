@@ -10,7 +10,9 @@ import "./stylesheet/profilepage.css";
 import "./stylesheet/search.css";
 import "./stylesheet/loginpage.css";
 import "./stylesheet/signuppage.css";
+import AddSong from "./components/AddSong";
 import Home from "./components/home";
+import "./stylesheet/addsong.css";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import PlaylistPage from "./components/PlaylistPage";
@@ -63,6 +65,7 @@ const RenderAuth = () => {
   return <Redirect to="/" />;
 };
 
+
 const App = () => {
   return (
     <UserProvider>
@@ -71,6 +74,7 @@ const App = () => {
         <div className="section">
           <RenderAuth />
           <RenderUser />
+
         </div>
       </BrowserRouter>
     </UserProvider>
