@@ -1,21 +1,33 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const LoginPage = () =>{
-    return(
-        <div className = 'loginbox'>
-                <h1 className = 'formtop'>Login</h1>
-                <div>
-                <h2 className = 'formfield'>Username</h2>
-                <input className = 'forminput' type = 'text' placeholder = 'Username' name = 'username'/>
-                </div>
-                <div>
-                <h2 className = 'formfield'>Password</h2>
-                <input className = 'forminput' type = 'password' name = 'pass' placeholder = '********'/>
-                </div>
-                <button className = 'clickme3 bt2'>New User</button>
-                <button className = 'clickme3 bt3'>Login</button>
-        </div>
-    );
-}
+const LoginPage = () => {
+  return (
+    <div className="loginbox">
+      <h1>Login</h1>
+      <label for="username">Username</label>
+      <input
+        className="forminput"
+        type="text"
+        placeholder="Username"
+        name="username"
+      />
+
+      <label for="password">Password</label>
+      <input
+        className="forminput"
+        type="password"
+        name="password"
+        placeholder="********"
+      />
+      <div className="buttons">
+        <button className="bt">Login</button>
+        <Link to="/signup">
+          <button className="bt">New User</button>
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 export default LoginPage;
