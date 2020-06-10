@@ -1,11 +1,13 @@
 .search {
   background: rgba(0, 0, 0, 0.775);
   width: 90%;
+  height: 50px;
   max-width: 677px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   border-radius: 70px;
   position: relative;
+  margin: 50px;
 }
 
 .search .searchBox {
@@ -70,6 +72,7 @@
 }
 
 .search .searchBox .optionBox .options {
+  z-index: 3;
   position: absolute;
   background: white;
   top: 50px;

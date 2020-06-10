@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Upload from "./Upload";
 import "../stylesheet/upload.css";
 
+const initialFormData = Object.freeze({
+  fullname: "",
+  password: "",
+  info: "",
+  email: "",
+  image: "",
+  type: ""
+});
+
 const SignupPage = () => {
+  const [file, setFile] = useState("");
+  const [formData, setFormData] = React.useState(initialFormData);
+
+  const handleInputChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+    // console.log(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(formData);
+    // ... submit to API or something
+  };
+
+  const handleChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: URL.createObjectURL(e.target.files[0])
+    });
+
+    // setFile(URL.createObjectURL(event.target.files[0]));
+    // console.log(e.target.name);
+  };
+
   return (
     <div className="signupbox">
       <h1 className="formtop">Create Account</h1>
@@ -13,7 +49,9 @@ const SignupPage = () => {
           className="forminput"
           type="text"
           placeholder="Username"
-          name="username"
+          name="fullname"
+          value={formData.fullname}
+          onChange={handleInputChange}
         />
       </div>
       <div>
@@ -22,12 +60,14 @@ const SignupPage = () => {
           className="forminput"
           type="text"
           placeholder="Something about You!"
-          name="bio"
+          name="info"
+          value={formData.info}
+          onChange={handleInputChange}
         />
       </div>
       <h2 className="formfield">Profile Picture</h2>
-      <div>
-        <Upload />
+      <div className="profImage">
+        <Upload file={formData.image} onchange={handleChange} />
       </div>
       <div>
         <h2 className="formfield">Enter Email</h2>
@@ -36,13 +76,20 @@ const SignupPage = () => {
           type="email"
           placeholder="abc@dhwani.co.in"
           name="email"
+          value={formData.email}
+          onChange={handleInputChange}
         />
       </div>
       <div>
         <h2 className="formfield">Select Account Type</h2>
-        <select className="seltype">
-          <option value="0">Enthusiast</option>
-          <option value="1">Artist</option>
+        <select
+          className="seltype"
+          value={formData.type}
+          name="type"
+          onClick={handleInputChange}
+        >
+          <option value="user">Enthusiast</option>
+          <option value="artist">Artist</option>
         </select>
       </div>
       <div>
@@ -52,19 +99,14 @@ const SignupPage = () => {
           type="password"
           name="password"
           placeholder="Password..."
+          value={formData.password}
+          onChange={handleInputChange}
         />
       </div>
-      {/* <div>
-        <h2 className="formfield">Retype Password</h2>
-        <input
-          className="forminput"
-          type="password"
-          name="repass"
-          placeholder="Password..."
-        />
-      </div> */}
       <div className="buttons">
-        <button className="bt">Create Account</button>
+        <button className="bt" onClick={handleSubmit}>
+          Create Account
+        </button>
         <Link to="/login">
           <button className="bt">Already have an Account?</button>
         </Link>
