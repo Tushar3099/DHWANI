@@ -11,13 +11,6 @@ const Search = () => {
     svg.classList.toggle("active");
   };
 
-  const data = [
-    {
-      name: "Jo bheji thi Dua",
-      artist: "Arijit Singh"
-    }
-  ];
-
   const [type, setType] = useState("Song");
 
   return (
@@ -33,7 +26,7 @@ const Search = () => {
             <li onClick={e => setType("Song")}>Song</li>
             <li onClick={e => setType("Artist")}>Artist</li>
             <li onClick={e => setType("Mood")}>Mood</li>
-            <li onClick={e => setType("Genre") ()}>Genre</li>
+            <li onClick={e => setType("Genre")()}>Genre</li>
           </div>
         </div>
       </div>

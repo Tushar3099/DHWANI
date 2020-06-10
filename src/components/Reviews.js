@@ -1,15 +1,20 @@
 import React from "react";
 
-const Reviews = ({ username, review }) => {
+const Reviews = ({ username, review, date, image }) => {
   return (
     <div className="reviews">
-      <img
-        className="reviewpic"
-        alt="Profile Pic"
-        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-      />
-      <h3 className="songtext2">{username}</h3>
-      <p className="reviewtext">{review}</p>
+      <div className="reviewpic">
+        <img alt="Profile Pic" src={image} />
+      </div>
+      <div className="reviewSection">
+        <div className="head">
+          <h3 className="name">{username}</h3>
+          <h5 className="date">{date}</h5>
+        </div>
+        <div className="content">
+          <p>{review}</p>
+        </div>
+      </div>
     </div>
   );
 };
