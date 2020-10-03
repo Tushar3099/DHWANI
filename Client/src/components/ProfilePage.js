@@ -12,8 +12,8 @@ const ProfilePage = props => {
 
         <div className="profinfo">
           <h2 className="prof1">User</h2>
-          <h1 className="prof2">{user.name}</h1>
-          <p className="prof3">{user.bio}</p>
+          <h1 className="prof2">{user.fullname}</h1>
+          <p className="prof3">{user.info}</p>
         </div>
       </div>
       <div className="part2">

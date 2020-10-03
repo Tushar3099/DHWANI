@@ -24,6 +24,7 @@ import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import { UserProvider, UserContext } from "./userContext";
 import { SongProvider } from "./songContext";
+import { TokenProvider } from "./tokenContext";
 
 const renderPlaylistPage = ({ match }) => {
   const id = match.params.id;
@@ -61,7 +62,7 @@ const RenderAuth = () => {
     return (
       <>
         <Route path="/signup" component={SignupPage} />
-        <Route path="/login" component={ModeratorPage} />
+        <Route path="/login" component={LoginPage} />
         <Redirect to="/login" />
       </>
     );
@@ -73,7 +74,7 @@ const RenderAuth = () => {
 const App = () => {
   return (
     <UserProvider>
-
+      <TokenProvider>
       <SongProvider>
         <BrowserRouter>
           <Route path="/" component={Navbar} />
@@ -83,7 +84,7 @@ const App = () => {
           </div>
         </BrowserRouter>
       </SongProvider>
-
+      </TokenProvider>
     </UserProvider>
   );
 };

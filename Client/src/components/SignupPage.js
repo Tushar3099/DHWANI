@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Upload from "./Upload";
 import "../stylesheet/upload.css";
 
@@ -16,6 +16,8 @@ const SignupPage = () => {
   const [file, setFile] = useState("");
   const [formData, setFormData] = React.useState(initialFormData);
 
+  const history = useHistory();
+
   const handleInputChange = e => {
     setFormData({
       ...formData,
@@ -27,7 +29,24 @@ const SignupPage = () => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(formData);
-    // ... submit to API or something
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log(data.error)
+          return ;
+        }
+        history.push("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleChange = e => {

@@ -51,7 +51,7 @@ const Home = () => {
   };
 
   const renderSong = songArr.map(song => {
-    console.log(song);
+    // console.log(song);
     return (
       <Link to="/song/:id">
         <SongList song={song} />
